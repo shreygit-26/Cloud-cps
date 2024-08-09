@@ -1,0 +1,102 @@
+/*
+SQLyog Enterprise - MySQL GUI v6.56
+MySQL - 5.5.5-10.4.14-MariaDB : Database - cloud
+*********************************************************************
+*/
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`cloud` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+/*Table structure for table `dataowners` */
+
+DROP TABLE IF EXISTS `dataowners`;
+
+CREATE TABLE `dataowners` (
+  `slno` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) DEFAULT NULL,
+  `Email` varchar(30) DEFAULT NULL,
+  `Number` int(20) DEFAULT NULL,
+  `Gender` varchar(30) DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL,
+  `Otp` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`slno`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `dataowners` */
+
+insert  into `dataowners`(`slno`,`Name`,`Email`,`Number`,`Gender`,`Address`,`Otp`) values (16,'Rupesh','rupeshrupi@gmail.com',2147483647,'Male','Piler, chittor(dist), A.P','2345356'),(17,'Sainath','Sainath@gmail.com',2147483647,'Male','puttor(dist)','698738'),(19,'Narendra','Narendra@gmail.com',2147483647,'Male','Kadapa','544008'),(20,'jayaram','jayaram@gmail.com',2147483647,'Male','tirupati','276963'),(21,'hari','Hari@gmail.com',2147483647,'Male','banglore','Authorization');
+
+/*Table structure for table `datausers` */
+
+DROP TABLE IF EXISTS `datausers`;
+
+CREATE TABLE `datausers` (
+  `Slno` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) DEFAULT NULL,
+  `Email` varchar(30) DEFAULT NULL,
+  `Number` int(15) DEFAULT NULL,
+  `Gender` varchar(20) DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL,
+  `Otp` varchar(20) DEFAULT NULL,
+  `fileid` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Slno`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `datausers` */
+
+insert  into `datausers`(`Slno`,`Name`,`Email`,`Number`,`Gender`,`Address`,`Otp`,`fileid`) values (7,'mahesh','rupeshypr143@gmai.com',2147483647,'Male','Nandyala','411601750','7'),(10,'Balaji','rupeshrupi423@gmail.com',2147483647,'Male','Kadapa','796151772',NULL),(11,'chenchulakshmi','Chenchulakshmi@gmail.com',2147483647,'Female','Kurnool','Authorization',NULL);
+
+/*Table structure for table `filesupload` */
+
+DROP TABLE IF EXISTS `filesupload`;
+
+CREATE TABLE `filesupload` (
+  `Sl_No` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `owneremail` varchar(100) DEFAULT NULL,
+  `FileName` varchar(100) DEFAULT NULL,
+  `Keywords` varchar(100) DEFAULT NULL,
+  `Files` longblob DEFAULT NULL,
+  PRIMARY KEY (`Sl_No`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `filesupload` */
+
+insert  into `filesupload`(`Sl_No`,`owneremail`,`FileName`,`Keywords`,`Files`) values (7,'rupeshrupi@gmail.com','34tw4','12e','\Z   a .*v  ( o'),(9,'rupeshrupi@gmail.com','samplefile','ohjfy','      @   { 	  '),(10,'rupeshrupi@gmail.com','textfile','oh','\Z   a .*v  ( o'),(12,'Sainath@gmail.com','document','docs','      @   { 	  '),(14,'jayaram@gmail.com','example file','samplefiles','\Z   a .*v  ( o');
+
+/*Table structure for table `ownership` */
+
+DROP TABLE IF EXISTS `ownership`;
+
+CREATE TABLE `ownership` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `Email` varchar(100) DEFAULT NULL,
+  `fname` varchar(100) DEFAULT NULL,
+  `omail` varchar(100) DEFAULT NULL,
+  `status` varchar(100) DEFAULT 'waiting',
+  `Sl_No` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `ownership` */
+
+insert  into `ownership`(`id`,`Email`,`fname`,`omail`,`status`,`Sl_No`) values (6,'Sainath@gmail.com','document','rupeshrupi@gmail.com','Accepted',12),(7,'Sainath@gmail.com','document','jayaram@gmail.com','Accepted',12),(8,'jayaram@gmail.com','example file','Sainath@gmail.com','waiting',14);
+
+/*Table structure for table `request` */
+
+DROP TABLE IF EXISTS `request`;
+
+CREATE TABLE `request` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) DEFAULT NULL,
+  `fname` varchar(100) DEFAULT NULL,
+  `Sl_No` int(10) DEFAULT NULL,
+  `status` varchar(100) DEFAULT 'pending',
+  `pkey` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `request` */
+
+insert  into `request`(`id`,`email`,`fname`,`Sl_No`,`status`,`pkey`) values (6,'rupeshypr143@gmai.com','document',12,'Accepted','235892961'),(7,'rupeshypr143@gmai.com','textfile',10,'Accepted',NULL);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
